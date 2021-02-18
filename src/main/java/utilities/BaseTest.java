@@ -2,7 +2,6 @@ package utilities;
 
 import java.util.concurrent.TimeUnit;
 
-import io.cucumber.java.AfterStep;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -15,34 +14,21 @@ public class BaseTest {
 
     protected WebDriver driver;
     protected LoginPage log;
+    private final BrowserFactory BROWSER_FACTORY = new BrowserFactory();
 
-    public void setBrowser(String browser){
-        driver = driverFactory(browser);
-    }
-
-
+    @BeforeMethod
     public void setup() {
+        driver = BROWSER_FACTORY.driverFactory("Chrome");
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get("https://antonioss.printercloud.com/admin/index.php");
         log = new LoginPage(driver, 15);
     }
 
+    @AfterMethod
     public void tearDown() {
         driver.quit();
     }
 
-    private WebDriver driverFactory(String browser){
-        if(browser.equals("Chrome")){
-            System.setProperty("webdriver.chrome.driver", "C:\\chromedriver\\chromedriver.exe");
-            return new ChromeDriver();
-        }
-        else if (browser.equals("Firefox")){
-            System.setProperty("webdriver.gecko.driver","C:\\geckodriver\\geckodriver.exe");
-            return new FirefoxDriver();
-        }
-        else{
-            return new ChromeDriver();
-        }
-    }
+
 }

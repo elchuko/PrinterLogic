@@ -9,9 +9,7 @@ import utilities.BasePage;
 
 public class LoginPage extends BasePage {
 
-    public LoginPage(WebDriver driver, int time) {
-        super(driver, time);
-    }
+
 
     @FindBy(id="relogin_user")
     WebElement usernameInput;
@@ -25,7 +23,12 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//*[contains(text(),'Invalid username or password')]")
     WebElement wrongLoginText;
 
+    @FindBy(id="forgot-password")
+    WebElement forgotPasswordLink;
 
+    public LoginPage(WebDriver driver, int time) {
+        super(driver, time);
+    }
 
     public void waitForPageToLoad() {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("logo")));
@@ -35,6 +38,10 @@ public class LoginPage extends BasePage {
         sendKeysToElement(this.usernameInput, username);
         sendKeysToElement(this.passwordInput, password);
         clickOnElement(loginButton);
+    }
+
+    public void forgotPassowrdClick(){
+        forgotPasswordLink.click();
     }
 
     public Boolean isWrongLoginTextPresent(){

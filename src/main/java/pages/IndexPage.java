@@ -11,7 +11,7 @@ public class IndexPage extends BasePage {
 
 
 
-    @FindBy(id="mainpane")
+    @FindBy(xpath="//*[@id='mainpane']")
     WebElement mainPane;
 
     @FindBy(xpath="//*[contains(text(),'General')]")
@@ -32,7 +32,7 @@ public class IndexPage extends BasePage {
     }
 
     public void waitForPageToLoad() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("mainpage")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("mainpane")));
     }
 
     public Boolean indexPageLoaded(){

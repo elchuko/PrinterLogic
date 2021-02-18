@@ -14,7 +14,7 @@ public class SidePane extends BasePage {
 
     @FindBy(id="newfolder")
     WebElement newFolderButton;
-    
+
     public SidePane(WebDriver driver, int time){
         super(driver, time);
     }

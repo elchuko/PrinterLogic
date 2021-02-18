@@ -1,5 +1,6 @@
 package utilities;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -15,10 +16,11 @@ public class BaseTest {
     protected WebDriver driver;
     protected LoginPage log;
     private final BrowserFactory BROWSER_FACTORY = new BrowserFactory();
+    private final ConfigHelper CONFIG = new ConfigHelper();
 
     @BeforeMethod
-    public void setup() {
-        driver = BROWSER_FACTORY.driverFactory("Chrome");
+    public void setup() throws IOException {
+        driver = BROWSER_FACTORY.driverFactory(CONFIG.getBroserFromPropValues());
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get("https://antonioss.printercloud.com/admin/index.php");

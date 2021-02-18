@@ -9,21 +9,35 @@ import utilities.BasePage;
 
 public class IndexPage extends BasePage {
 
+
+
+    @FindBy(id="mainpane")
+    WebElement mainPane;
+
+    @FindBy(xpath="//*[contains(text(),'General')]")
+    WebElement generalTab;
+
+    @FindBy(xpath="//*[contains(text(),'Security')]")
+    WebElement securityTab;
+
+    @FindBy(xpath="//*[contains(text(),'Alerts')]")
+    WebElement alertsTab;
+
+    @FindBy(xpath="//*[contains(text(),'Map')]")
+    WebElement mapTab;
+
+
     public IndexPage(WebDriver driver, int time){
         super(driver, time);
     }
 
-    @FindBy(id="logo")
-    WebElement printerLogicLogo;
-
-
     public void waitForPageToLoad() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("logo")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("mainpage")));
     }
 
     public Boolean indexPageLoaded(){
         waitForPageToLoad();
-        return printerLogicLogo.isDisplayed();
+        return mainPane.isDisplayed();
     }
 
 

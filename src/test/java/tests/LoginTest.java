@@ -24,19 +24,19 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void loginTest_Bad_Username_Good_Password_Fails(){
-        log.login(NOT_ELCHUKO, GOOD_PASSWORD);
+        log.populateAndSubmitLoginPageExpectingHomePage(NOT_ELCHUKO, GOOD_PASSWORD);
         Assert.assertTrue(log.isWrongLoginTextPresent());
     }
 
     @Test
     public void loginTest_Good_Username_Bad_Password_Fails(){
-        log.login(ELCHUKO, BAD_PASSWORD);
+        log.populateAndSubmitLoginPageExpectingHomePage(ELCHUKO, BAD_PASSWORD);
         Assert.assertTrue(log.isWrongLoginTextPresent());
     }
 
     @Test
     public void loginTest_Bad_Username_Bad_Password_Fails(){
-        log.login(NOT_ELCHUKO, BAD_PASSWORD);
+        log.populateAndSubmitLoginPageExpectingHomePage(NOT_ELCHUKO, BAD_PASSWORD);
         Assert.assertTrue(log.isWrongLoginTextPresent());
     }
 }

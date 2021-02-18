@@ -9,8 +9,6 @@ import utilities.BasePage;
 
 public class LoginPage extends BasePage {
 
-
-
     @FindBy(id="relogin_user")
     WebElement usernameInput;
 
@@ -31,7 +29,7 @@ public class LoginPage extends BasePage {
     }
 
     public void waitForPageToLoad() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("logo")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("loginmenu")));
     }
 
     public void login(String username, String password){
